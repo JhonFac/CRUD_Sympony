@@ -1,0 +1,24 @@
+Desarollador en symfomy 6
+
+- Base de datos adjunta
+
+# COMANDOS UTILIZADOS #
+
+php bin/console doctrine:database:create        -> crear base de datos
+
+php bin/console doctrine:schema:update --force  -> Crear las tablas de la base de datos o Realizar migraciones
+
+php bin/console make:entity                     -> Crear Etidades 
+
+php bin/console make:controller                 -> Crear controlador 
+
+php bin/console make:form                       -> Crear Formulario
+
+symfony server:start                            -> CORRER SERVIDOR
+
+# PAGINAR - BUNDLES #
+
+composer require knplabs/knp-paginator-bundle   -> Paginador amigable de Symfony  URL => https://github.com/KnpLabs/KnpPaginatorBundle
+    
+
+

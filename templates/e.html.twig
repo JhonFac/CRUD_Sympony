@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update - {{ name }} {% endblock %}
+
+{% block body %}
+
+
+
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+        <div class="card text-white bg-dark">
+            <div class="card-header">Editando: {{ name }}</div>
+            <div class="card-body">
+            {{ form(formProperties) }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

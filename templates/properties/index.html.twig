@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PropertiesController!{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                {{ form(formProperties) }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> ID</th>
+                            <th scope="col"> Name </th>
+                            <th scope="col"> Code </th>
+                            <th scope="col"> Description </th>
+                            <th scope="col"> Brand </th>
+                            <th scope="col"> Price </th>
+                            <th scope="col"> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in postProperties %}
+                        <!-- postCategory -->
+                        <!-- postProperties -->
+                        <tr>
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.name }}</td>
+                            <td>{{ data.code }}</td>
+                            <td>{{ data.description }}</td>
+                            <td>{{ data.brand }}</td>
+                            <td>{{ data.price }}</td>
+                            <td>
+                                <a href="delet/{{ data.id }}/{{ gid }}"><button type="button"
+                                        class="btn btn-danger">Delet</button></a>
+                                <a href="edit/{{ data.id }}/{{ data.name }}/{{ gid }}"><button type="button"
+                                        class="btn btn-primary">Update</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        {% for message in app.flashes('msg') %}
+        <div class="alert alert-success" style="top:1%;">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    $(".alert").delay(4000).slideUp(200, function () {
+        $(this).alert('close');
+    });
+</script>
+
+{% endblock %}

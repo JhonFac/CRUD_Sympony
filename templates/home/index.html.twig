@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CRUD HOME{% endblock %}
+
+{% block body %}
+
+
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                {{ form(formCategory) }}
+            </div>
+        </div>
+        {% for message in app.flashes('msg') %}
+        <!-- <div class="alert alert-success"> -->
+        <div class="alert alert-primary" style="top:1%;" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-9">
+        <div class="card">
+            <div class="card-body">
+                <!-- <div class="count">
+                    {{ pagination.getTotalItemCount }}
+                </div> -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            {# sorting of properties based on query components #}
+                            <th scope="col">{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                            <th scope="col" {% if pagination.isSorted('a.Title') %} class="sorted" {% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Name', 'a.name') }}
+                            </th>
+                            <th scope="col" {% if pagination.isSorted(['a.date', 'a.time' ]) %} class="sorted" {% endif
+                                %}>
+                                {{ knp_pagination_sortable(pagination, ' Active', 'a.active') }}
+                            </th>
+                            <th scope="col" {% if pagination.isSorted(['a.date', 'a.time' ]) %} class="sorted" {% endif
+                                %}>
+                                {{ knp_pagination_sortable(pagination, ' Actions', 'a.Actions') }}
+                            </th>
+                        </tr>
+                    </thead>
+
+                    {# table body #}
+                    {% for article in pagination %}
+                    <tr {% if loop.index is odd %}class="color" {% endif %}>
+                        <td scope="row">{{ article.id }}</td>
+                        <td><a href="/properties/{{ article.id }}" class="button">{{ article.name }}</a></td>
+                        <td>{{ article.active }}</td>
+                        <td>
+                            <a href="/delet/{{ article.id }}"><button type="button"
+                                    class="btn btn-danger">Delet</button></a>
+                            <a href="/home/edit/{{ article.id }}/{{ article.name }}"><button type="button"
+                                    class="btn btn-primary">Update</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".alert").delay(4000).slideUp(200, function () {
+        $(this).alert('close');
+    });
+</script>
+
+{% endblock %}
