@@ -62,7 +62,7 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/delet/{id}', name: 'FilterView')]
+    #[Route('home/delet/{id}', name: 'DeletCategory')]
     public function Remove($id, PersistenceManagerRegistry $doctrine)
     {
         $em = $doctrine->getManager();
@@ -77,7 +77,8 @@ class HomeController extends AbstractController
         return $this->redirect('/home');
     }
 
-    #[Route('/home/edit/{id}/{name}', name: 'EditCategory')]
+
+    #[Route('home/edit/{id}/{name}', name: 'EditCategory')]
     public function update(Request $request, int $id, $name, PersistenceManagerRegistry $doctrine): Response
     {
         $Category = new Category();

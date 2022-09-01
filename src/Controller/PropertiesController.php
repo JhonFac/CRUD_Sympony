@@ -46,7 +46,7 @@ class PropertiesController extends AbstractController
     }
 
 
-    #[Route('properties/delet/{id}/{Gid}', name: 'FilterView')]
+    #[Route('properties/delet/{id}/{Gid}', name: 'DeleteProperties')]
     public function Remove($id, $Gid, PersistenceManagerRegistry $doctrine)
     {
         $em = $doctrine->getManager();
@@ -63,7 +63,7 @@ class PropertiesController extends AbstractController
     }
 
 
-    #[Route('properties/edit/{id}/{name}/{Gid}', name: 'EditCategory')]
+    #[Route('properties/edit/{id}/{name}/{Gid}', name: 'EditProperties')]
     public function update($Gid, Request $request, int $id, $name, PersistenceManagerRegistry $doctrine): Response
     {
         $Properties = new Properties();
